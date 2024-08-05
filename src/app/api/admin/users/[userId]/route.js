@@ -1,6 +1,6 @@
-import connectToDatabase from "@/_database/mongodb";
-import { generateRandomUsername } from "@/helpers/Backend";
-import User from "@/schemas/User";
+import connectToDatabase from "../../../../../_database/mongodb";
+import { generateRandomUsername } from "../../../../../helpers/Backend";
+import User from "../../../../../schemas/User";
 import bcryptjs from "bcryptjs";
 import { NextResponse } from "next/server";
 

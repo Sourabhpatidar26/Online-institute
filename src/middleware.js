@@ -5,7 +5,7 @@ export async function middleware(request) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("token")?.value || "";
   const isPublicPath = path === "/login" || path === "/register";
-
+console.log(token)
   // Authenticate API calls
   if (
     !isPublicPath &&

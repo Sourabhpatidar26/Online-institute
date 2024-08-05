@@ -1,0 +1,98 @@
+.drawer-toggle ~ .drawer-side{
+    &::-webkit-scrollbar{
+        width: 1px;
+    }
+    &::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 6px oklch(var(--bc));
+    }
+    
+}
+:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn):focus{
+    color: oklch(var(--b1)) !important;
+}
+
+.main-container{
+    height: 95% !important;
+    overflow-y: scroll;
+}
+
+ul{
+    &.side-menu{
+        li{
+            position: relative;
+            
+            a{
+                color: rgba(#ffffff, 0.5) !important;
+                background: none !important;
+                img{
+                    opacity: 0.5;
+                }
+                &:active, &:focus, &:hover, &.active-tab{
+                    color: oklch(var(--pc)) !important;
+                    background: oklch(var(--a)) !important;
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 5px;
+                        height: 57px;
+                        background-color: oklch(var(--pc));
+                    }
+                    img{
+                        opacity: 1;
+                    }
+                }
+                &:focus-visible{
+                    outline: none;
+                }
+            }
+            
+            .side-sub-menu{
+                margin-left: 15px;
+                li {
+                    position: relative;
+                    
+                    a{
+                        background: none !important;
+                        color: rgba(#ffffff, 0.5) !important;
+
+                        &:active, &:focus, &:hover, &.active{
+                            background: none !important;
+                            color: oklch(var(--pc)) !important;
+                            &::before{
+                                background-color: oklch(var(--pc));
+                            }
+                        }
+
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            width: 8px;
+                            height: 8px;
+                            background-color: rgba(#ffffff, 0.5);
+                            top: 17px;
+                            left: 17px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}
+
+.indicator{
+    .counter{
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background-image: url(../../assets/images/svg/indicator.svg); 
+            border-radius: 50%;
+        }
+    }
+}

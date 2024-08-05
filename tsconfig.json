@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "src/app/admin/ums/page.jsx", "src/app/admin/cms/notes/page.jsx", "src/app/admin/cms/live_session/page.jsx", "src/app/admin/cms/gallary/page.jsx", "src/app/notes/page.jsx", "src/app/live_session/page.jsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

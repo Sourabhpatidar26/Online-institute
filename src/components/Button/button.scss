@@ -1,0 +1,24 @@
+.btn{
+    &.btn-sm{
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 24px;
+        padding: 0.5rem 0.5rem;
+        min-height: 2.5rem;
+        max-height: 2.5rem;
+    }
+    &.btn-xsm{
+        font-size: 0.875rem;
+        font-weight: 600;
+        line-height: 21px;
+        padding: 0.5rem 0.5rem;
+        min-height: 1.625rem;
+        max-height: 1.625rem;
+    }
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 27px;
+    // padding: 0.875rem 0.875rem;
+    min-height: 3.5rem;
+    max-height: 3.5rem;
+}

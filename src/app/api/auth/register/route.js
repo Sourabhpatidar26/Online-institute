@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import User from "@/schemas/User";
-import { generateRandomUsername } from "@/helpers/Backend";
-import connectToDatabase from "@/_database/mongodb";
+import User from "../../../../schemas/User";
+import { generateRandomUsername } from "../../../../helpers/Backend";
+import connectToDatabase from "../../../../_database/mongodb";
 
 export async function POST(request) {
   try {

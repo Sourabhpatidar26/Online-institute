@@ -1,0 +1,20 @@
+.filter-wrapper{
+    .layout-view {
+        border: 1px solid oklch(var(--nc));
+        height: 40px;
+        width: 40px;
+        border-radius: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &:hover, &.active{
+            border: 1px solid oklch(var(--p));
+            background-color: oklch(var(--p));
+            img{
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+}
