@@ -1,21 +1,13 @@
 import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import connectToDatabase from "@/lib/mongodb";
 import User from "@/schemas/User";
 import createJWT from "@/JWT/createJWT";
+import connectToDatabase from "@/_database/mongodb";
 
 export async function POST(request) {
   try {
-    let reqBody;
-    try {
-      reqBody = await request.json();
-    } catch (error) {
-      return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
-    }
+    const { email, password } = await request.json();
     
-    await connectToDatabase();
-    const { email, password } = reqBody;
-
     if (!email || !password) {
       return NextResponse.json(
         { error: "Please provide both email and password" },
@@ -23,8 +15,9 @@ export async function POST(request) {
       );
     }
 
-    const user = await User.findOne({ email }).select("+password");
+    await connectToDatabase();
 
+    const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return NextResponse.json(
         { error: "User does not exist" },
@@ -33,27 +26,30 @@ export async function POST(request) {
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
-
     if (!isMatch) {
-      return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Invalid password" },
+        { status: 401 }
+      );
     }
 
+    console.log(user)
     const tokenData = {
       id: user._id,
       username: user.username,
       fullName: user.fullName,
       email: user.email,
+      role:user.role
     };
-
     const token = createJWT(tokenData);
 
     const expirationTimeInHours = 1;
-    const expirationTimeInSeconds = expirationTimeInHours * 3600; // Convert hours to seconds
+    const expirationTimeInSeconds = expirationTimeInHours * 3600;
 
     await User.updateOne({ _id: user._id }, { lastLoginAt: new Date() });
 
     const headers = {
-      "Set-Cookie": `token=${token}; HttpOnly=true; Max-Age=${expirationTimeInSeconds}; Path=/`,
+      "Set-Cookie": `token=${token}; HttpOnly; Max-Age=${expirationTimeInSeconds}; Path=/`,
     };
 
     return NextResponse.json(
@@ -61,7 +57,7 @@ export async function POST(request) {
       { headers }
     );
   } catch (error) {
-    console.log(error.message);
+    console.error("Error during login:", error.message);
     return NextResponse.json(
       { error: error.message || "Internal Server Error" },
       { status: 500 }

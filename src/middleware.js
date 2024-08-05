@@ -4,8 +4,7 @@ import verifyOnJWT from "./JWT/verifyOnEdge";
 export async function middleware(request) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("token")?.value || "";
-  const isPublicPath =
-    path === "/login" || path === "/register";
+  const isPublicPath = path === "/login" || path === "/register";
 
   // Authenticate API calls
   if (
@@ -16,7 +15,7 @@ export async function middleware(request) {
   ) {
     const verifyData = await verifyOnJWT(token);
     const isAuth = verifyData?.payload;
-console.log("isAuth ===========", isAuth)
+
     if (!isAuth) {
       const headers = {
         "Set-Cookie": `token=; HttpOnly=true; expires=${new Date(
@@ -26,7 +25,14 @@ console.log("isAuth ===========", isAuth)
       // Respond with JSON indicating an error message
       return NextResponse.json(
         { success: false, message: "authentication failed" },
-        { status: 401, headers }
+        { status: 401 }
+      );
+    }
+
+    if (isAuth.role === "student" && path.startsWith("/api/admin")) {
+      return NextResponse.json(
+        { success: false, message: "Access denied" },
+        { status: 401 }
       );
     }
 
@@ -53,16 +59,5 @@ console.log("isAuth ===========", isAuth)
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: [
-    "/",
-    "/login",
-    "/register",
-    "/forget-password",
-    "/explore",
-    "/messages",
-    "/messages/:path*",
-    "/profile",
-    "/profile/:path*",
-    "/api/:path*",
-  ],
+  matcher: ["/api/:path*"],
 };
