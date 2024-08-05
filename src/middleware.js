@@ -1,0 +1,68 @@
+import { NextResponse } from "next/server";
+import verifyOnJWT from "./JWT/verifyOnEdge";
+
+export async function middleware(request) {
+  const path = request.nextUrl.pathname;
+  const token = request.cookies.get("token")?.value || "";
+  const isPublicPath =
+    path === "/login" || path === "/register";
+
+  // Authenticate API calls
+  if (
+    !isPublicPath &&
+    path.startsWith("/api/") &&
+    !path.endsWith("login") &&
+    !path.endsWith("register")
+  ) {
+    const verifyData = await verifyOnJWT(token);
+    const isAuth = verifyData?.payload;
+console.log("isAuth ===========", isAuth)
+    if (!isAuth) {
+      const headers = {
+        "Set-Cookie": `token=; HttpOnly=true; expires=${new Date(
+          0
+        ).toUTCString()}; path=/`,
+      };
+      // Respond with JSON indicating an error message
+      return NextResponse.json(
+        { success: false, message: "authentication failed" },
+        { status: 401, headers }
+      );
+    }
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-user-id", isAuth.id);
+    const response = NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+    return response;
+  }
+
+  if (!path.startsWith("/api/")) {
+    if (isPublicPath && token) {
+      return NextResponse.redirect(new URL("/", request.nextUrl));
+    }
+
+    if (!isPublicPath && !token && token === "") {
+      return NextResponse.redirect(new URL("/login", request.nextUrl));
+    }
+  }
+}
+
+// See "Matching Paths" below to learn more
+export const config = {
+  matcher: [
+    "/",
+    "/login",
+    "/register",
+    "/forget-password",
+    "/explore",
+    "/messages",
+    "/messages/:path*",
+    "/profile",
+    "/profile/:path*",
+    "/api/:path*",
+  ],
+};
