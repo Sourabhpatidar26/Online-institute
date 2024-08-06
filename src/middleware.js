@@ -62,5 +62,15 @@ export async function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/login", "/register", "/forget-password", "/api/:path*"],
+  matcher: [
+    "/",
+    "/login",
+    "/register",
+    "/forget-password",
+    "/live_session",
+    "/notes",
+    "/gallary",
+    "/admin/:path*",
+    "/api/:path*",
+  ],
 };
