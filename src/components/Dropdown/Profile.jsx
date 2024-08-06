@@ -4,8 +4,10 @@ import Link from 'next/link';
 import Typography from '../Typography';
 //import './profile.scss'; // Assuming there's a corresponding SCSS file for styles
 import { Fragment } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Profile = ({ title, className, profileImage, position, ...rest }) => {
+  const router = useRouter();
   const classes = `${className || ''}`;
   const tabIndex = 1;
 
@@ -48,10 +50,10 @@ const Profile = ({ title, className, profileImage, position, ...rest }) => {
         </div>
 
         {/* Profile dropdown */}
-        <ul tabIndex={tabIndex} className="dropdown-content z-[1] menu p-2 mt-2 shadow bg-primary-content rounded-box w-48">
+        <ul tabIndex={tabIndex} className="dropdown-content z-10 menu p-2 mt-2 shadow bg-primary-content rounded-box w-48">
+          {/* <li><Link onClick={handleLogout} href='#' className='text-base-100 text-sm font-medium'>Logout</Link></li> */}
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Edit Profile</Link></li>
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Download</Link></li>
-          <li><Link href="/about" className='text-base-100 text-sm font-medium'>Logout</Link></li>
         </ul>
       </div>
     </Fragment>
