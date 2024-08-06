@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../assets/sass/variable.scss';
+@import '../assets/sass/style.scss';
+
 
 :root {
   --foreground-rgb: 0, 0, 0;

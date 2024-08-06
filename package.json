@@ -9,9 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^14.2.5",
     "bcryptjs": "^2.4.3",
-    "daisyui": "^4.12.10",
     "formik": "^2.4.6",
     "jose": "^5.6.3",
     "jsonwebtoken": "^9.0.2",
@@ -24,6 +22,8 @@
   },
   "devDependencies": {
     "@types/node": "22.1.0",
+    "@types/react": "18.3.3",
+    "daisyui": "^4.12.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",

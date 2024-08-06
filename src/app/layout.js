@@ -1,8 +1,8 @@
 "use client";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.scss";
 import Layout from "../components/Layout/layout";
-import AuthLayout from "../components/AuthLayout/AuthLayout";
+import AuthLayout from "../components/AuthLayout";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800", "900"],

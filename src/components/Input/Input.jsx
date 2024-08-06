@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import './input.scss';
 
-const Input = ({ id, label, inputSize, type, className, placeholder, value, ...rest }) => {
+const Input = ({ id, label, inputSize, type, className, placeholder, error, value, ...rest }) => {
   const classes = `${inputSize || ''} ${className || ''}`;
 
   return (
@@ -12,7 +12,7 @@ const Input = ({ id, label, inputSize, type, className, placeholder, value, ...r
             {label}
           </label>
         )}
-        <div className="rounded-0">
+        <div className="rounded-0 mb-4">
           <input
             type={type}
             id={id}
@@ -22,6 +22,7 @@ const Input = ({ id, label, inputSize, type, className, placeholder, value, ...r
             value={value}
             {...rest}
           />
+          {error && <div className="text-red-600">{error}</div>}
         </div>
       </div>
     </Fragment>

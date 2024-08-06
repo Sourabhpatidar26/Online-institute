@@ -80,24 +80,19 @@ export default function Login() {
         type="email"
         id="email"
         label="Email"
-        className="mb-4"
         placeholder="Example@email.com"
+        error={formik.touched.email && formik.errors.email ? formik.errors.email : null}
         {...formik.getFieldProps("email")}
       />
-      {formik.touched.email && formik.errors.email ? (
-        <div className="text-red-600">{formik.errors.email}</div>
-      ) : null}
+      
       <Input
         type="password"
         id="password"
         label="Password"
-        className="mb-4"
         placeholder="At least 8 characters"
+        error={formik.touched.password && formik.errors.password ? formik.errors.password : null}
         {...formik.getFieldProps("password")}
       />
-      {formik.touched.password && formik.errors.password ? (
-        <div className="text-red-600">{formik.errors.password}</div>
-      ) : null}
       <Typography
         size="text-sm"
         weight="font-normal"
