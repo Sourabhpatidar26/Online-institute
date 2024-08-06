@@ -4,14 +4,16 @@ import verifyOnJWT from "./JWT/verifyOnEdge";
 export async function middleware(request) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("token")?.value || "";
-  const isPublicPath = path === "/login" || path === "/register";
-console.log(token)
+  const isPublicPath =
+    path === "/login" || path === "/register" || path === "/forget-password";
+
   // Authenticate API calls
   if (
     !isPublicPath &&
     path.startsWith("/api/") &&
     !path.endsWith("login") &&
-    !path.endsWith("register")
+    !path.endsWith("register") &&
+    !path.endsWith("forget-password")
   ) {
     const verifyData = await verifyOnJWT(token);
     const isAuth = verifyData?.payload;
@@ -55,9 +57,10 @@ console.log(token)
       return NextResponse.redirect(new URL("/login", request.nextUrl));
     }
   }
+  // await middleware1(request)
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/api/:path*"],
+  matcher: ["/", "/login", "/register", "/forget-password", "/api/:path*"],
 };
