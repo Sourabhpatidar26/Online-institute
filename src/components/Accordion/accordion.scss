@@ -1,0 +1,39 @@
+.accordionBox{
+    border-bottom: 1px solid transparent;
+    &:last-child{
+        border-bottom: 1px solid oklch(var(--nc));
+    }
+    .collapse-title{
+        &::after{
+            background-image: url(../../assets/images/svg/doubleAngle.svg);
+            width: 18px;
+            height: 18px;
+            box-shadow: none;
+            transform: rotate(0deg);
+            top: 22px;
+        }
+    }
+    &.collapse-arrow:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-title:after {
+        transform: rotate(-180deg);
+        transform-origin: 50% 50%;
+    }
+    &.collapse-arrow:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-content{
+        padding-top: 16px;
+    }
+    &.accordionTable{
+        .collapse-title{
+            padding: 0;
+            table{
+                border: none;
+                &.table-custom{
+                    tr{
+                        border: none;
+                        td{
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

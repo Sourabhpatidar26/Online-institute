@@ -1,0 +1,108 @@
+label {
+    &.inputLabel {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        color: oklch(var(--b1));
+    }
+}
+
+.inputField {
+    input {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 30px;
+        min-height: 48px;
+        max-height: 48px;
+        border: 1px solid oklch(var(--nc));
+        color: oklch(var(--inc));
+        background-color: oklch(var(--in));
+        width: 100%;
+        &::placeholder {
+            color: oklch(var(-b3));
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &.input-sm {
+            min-height: 40px;
+            max-height: 40px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+        }
+
+        &.otp-input {
+            width: 55px;
+            text-align: center;
+        }
+
+        &:disabled{
+            background: rgba(244,244,244);
+        }
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: rgba(0, 0, 0, 0);
+        opacity: 1;
+        display: block;
+        background: url(../../assets/images/svg/calendar.svg) no-repeat;
+        width: 20px;
+        height: 20px;
+    }
+
+    textarea {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 30px;
+        min-height: 83px;
+        border: 1px solid oklch(var(--nc));
+        color: oklch(var(--inc));
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+}
+
+.selectField {
+    label {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+    }
+
+    select {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        min-height: 40px;
+        max-height: 40px;
+        border: 1px solid oklch(var(--nc));
+        color: oklch(var(--inc));
+        background-color: oklch(var(--in));
+        background-image: url('../../assets/images/svg/downAngle.svg');
+        background-size: 16px;
+        background-position: 95%;
+        padding: 8px 40px 8px 12px;
+        border-radius: 4px;
+        &:focus {
+            outline: none;
+        }
+
+        &:focus-visible {
+            outline: none;  
+        }
+
+    }
+}
+
+.checkboxField {
+    input {
+        border-radius: 4px;
+        border-color: oklch(var(--nc));
+    }
+}
