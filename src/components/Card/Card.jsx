@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 const Card = () => {
     return (
         <Fragment>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card shadow-lg">
                 <figure>
                     <Image
                         src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -14,14 +14,13 @@ const Card = () => {
                         width={200}
                     />
                 </figure>
-                <div className="card-body">
-                    <h2 className="card-title">
+                
+                    <h2 className="card-title text-base-100 text-lg font-medium">
                         Shoes!
-                        <div className="badge badge-secondary">NEW</div>
                     </h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <p>1 day ago</p>
-                </div>
+                    <p className='text-base-200 text-sm font-normal'>If a dog chews shoes whose shoes does he choose?</p>
+                    <p className='text-base-200 text-sm font-normal'>1 day ago</p>
+                
             </div>
         </Fragment>
     );

@@ -1,0 +1,31 @@
+.grid-view{
+    aspect-ratio: 16 / 9;
+    .card{
+        padding: 18px;
+        background-color: transparent;
+        border-radius: 14px;
+        figure{
+            border-radius: 14px;
+            img{
+                width: 100%;
+            }
+        }
+        .card-title{
+            padding-top: 10px;
+        }
+    }
+}
+.list-view{
+    .card{
+        padding: 18px;
+        background-color: transparent;
+        border-radius: 14px;
+        figure{
+            border-radius: 14px;
+            width: 150px;
+            img{
+                width: auto
+            }
+        }
+    }
+}
