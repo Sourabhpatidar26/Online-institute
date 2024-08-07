@@ -2,14 +2,12 @@
 
 import { Fragment, useState } from 'react';
 import './modal.scss'
-import CloseIcon from '@/app/assets/images/svg/closeIcon.svg'
+import CloseIcon from '../../assets/images/svg/closeIcon.svg'
 import Image from 'next/image';
 import Button from '../Button';
 import Typography from '../Typography';
 
-const Modal = ({ id, modalImage, modalTitle, modalText, btnPrimaryLabel, btnSecondaryLabel, className }) => {
-    const [showModal, setShowModal] = useState(true);
-
+const Modal = ({ id, showModal, setShowModal, modalImage, modalTitle, modalText, btnPrimaryLabel, btnSecondaryLabel, className }) => {
     const closeModal = () => {
       setShowModal(false);
     }

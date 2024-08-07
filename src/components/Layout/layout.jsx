@@ -33,16 +33,17 @@ const Layout = ({ className, data }) => {
 
                 </div>
                 {/* drawer sidebar */}
-                <div className="drawer-side lg:relative lg:bg-secondary">
+                <div className="drawer-side  lg:relative lg:bg-secondary">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <div className="menu px-0 pt-0 text-base-content">
+                    <div className="menu w-72 px-0 pt-0 text-base-content">
                         <div className='py-6 logo-image grid place-content-center sticky top-0 bg-secondary z-10'>
                             <Link href="/">
                                 <Image src={Logo} alt="logo" className='text-center' />
                             </Link>
                         </div>
                         <div className='pt-6'>
-                            <ul className='side-menu'>
+                            {/* side menu for user */}
+                            {/* <ul className='side-menu'>
                                 <li>
                                     <Link href="/live_session" className='text-primary-content text-base px-6 py-4'>
                                         <Image src={Live} alt="logo" className='text-center mr-2' />
@@ -61,7 +62,8 @@ const Layout = ({ className, data }) => {
                                         Gallery
                                     </Link>
                                 </li>
-                            </ul>
+                            </ul> */}
+                            {/* side menu for admin */}
                             <ul className='side-menu'>
                                 <li>
                                     <Link href="/admin" className='text-primary-content text-base px-6 py-4'>

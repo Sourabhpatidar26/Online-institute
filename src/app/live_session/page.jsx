@@ -1,30 +1,32 @@
-import React, { Fragment } from 'react'
-// import '../assets/sass/style.scss'
-import Card from '../../components/Card'
-import Filter from '../../components/Filter/Filter'
+"use client"
+import React, { Fragment, useState } from 'react'
+import Filter from '../../../components/Filter'
+import Card from '../../../components/Card'
 
 function LiveSession() {
+  const [view, setView] = useState('grid');
+
   return (
     <Fragment>
-      <Filter />
-      <div className='mt-5 grid grid-cols-1 lg:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  gap-4'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+      <Filter title="Live Session" view={view} setView={setView} />
+      <div className={`mt-5 grid ${view === 'grid' ? 'grid-view grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4' : 'list-view grid-cols-1 gap-2'}`}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
     </Fragment>
   )
 }
 
-export default LiveSession
+export default LiveSession;

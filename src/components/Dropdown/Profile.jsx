@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import DropdownIcon from '../../assets/images/svg/dropdown.svg';
+import DropdownIcon from '../../assets/images/svg/downAngle.svg';
 import Link from 'next/link';
 import Typography from '../Typography';
-//import './profile.scss'; // Assuming there's a corresponding SCSS file for styles
+import './dropdown.scss';
 import { Fragment } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -10,6 +10,21 @@ const Profile = ({ title, className, profileImage, position, ...rest }) => {
   const router = useRouter();
   const classes = `${className || ''}`;
   const tabIndex = 1;
+
+  const handleLogout = () => {
+    fetch("/api/auth/logout")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res?.message) {
+          router.push("/login");
+        } else {
+          throw new Error("Logout Failed");
+        }
+      })
+      .catch((error) => {
+        console.log("logout failed", error.message);
+      });
+  };
 
   return (
     <Fragment>
@@ -42,18 +57,23 @@ const Profile = ({ title, className, profileImage, position, ...rest }) => {
                   {position}
                 </Typography>
               </div>
-              {/* <div className='pt-2 '>
+              <div className='pt-2 '>
                 <Image src={DropdownIcon} alt='icon' />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Profile dropdown */}
-        <ul tabIndex={tabIndex} className="dropdown-content z-10 menu p-2 mt-2 shadow bg-primary-content rounded-box w-48">
+        <ul tabIndex={tabIndex} className="dropdown-content z-10 menu p-2 mt-2 shadow bg-primary-content rounded-box w-48 dropdown-tag">
           {/* <li><Link onClick={handleLogout} href='#' className='text-base-100 text-sm font-medium'>Logout</Link></li> */}
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Edit Profile</Link></li>
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Download</Link></li>
+          <li>
+            <Link href="javascript:void(0);" onClick={handleLogout} className="text-base-100 text-sm font-medium">
+              Logout
+            </Link>
+          </li>
         </ul>
       </div>
     </Fragment>

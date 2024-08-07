@@ -10,31 +10,14 @@ import HamburgerIcon from "../../assets/images/svg/hamburgerIcon.svg";
 import Notification from "../../assets/images/svg/notification.svg";
 import SearchIcon from "../../assets/images/svg/search.svg";
 import { Fragment, useState } from "react";
-import Button from "../Button";
 import { useRouter } from "next/navigation";
-//import './header.scss'; // Assuming there's a corresponding SCSS file for styles
 
 const Header = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(true);
 
   const toggleSearch = () => {
-    setShowSearch(!showSearch); // Toggle showSearch state
-  };
-
-  const handleLogout = () => {
-    fetch("/api/auth/logout")
-      .then((res) => res.json())
-      .then((res) => {
-        if (res?.message) {
-          router.push("/login");
-        } else {
-          throw new Error("Logout Failed");
-        }
-      })
-      .catch((error) => {
-        console.log("logout failed", error.message);
-      });
+    setShowSearch(!showSearch); 
   };
 
   return (
@@ -68,7 +51,7 @@ const Header = () => {
         </div>
       )}
 
-      <div className="hidden lg:flex flex-wrap justify-between items-center p-4 shadow-sm bg-primary-content sticky top-0">
+      <div className="hidden lg:flex flex-wrap justify-between items-center p-4 shadow-sm bg-primary-content sticky top-0 z-10">
         <div className="flex place-items-center gap-3">
           <div className="dropdown">
             <label htmlFor="my-drawer" className="drawer-button cursor-pointer">
@@ -81,14 +64,6 @@ const Header = () => {
           <div className="notifications cursor-pointer">
             <Image src={Notification} alt="icon" />
           </div>
-          <Button
-            onClick={handleLogout}
-            href="#"
-            className="btn-sm bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-          >
-            Logout
-          </Button>
-
           <Profile title="Dr. Jhon" profileImage={ProfileImage} />
         </div>
       </div>

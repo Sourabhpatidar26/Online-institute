@@ -10,7 +10,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`overflow-hidden ${poppins.className}`}>
+      <body className={` ${poppins.className}`}>
         <Provider>{children}</Provider>
       </body>
     </html>

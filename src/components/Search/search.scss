@@ -5,6 +5,8 @@
         input{
             min-height: 50px;
             color: oklch(var(--inc));
+            background: none;
+            border: none;
             &:focus-visible{
                 outline: none;
                 box-shadow: none;
