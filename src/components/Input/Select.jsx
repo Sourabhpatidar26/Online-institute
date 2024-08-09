@@ -1,22 +1,30 @@
-import { Fragment } from 'react';
-import './input.scss';
+import { Fragment } from "react";
+import "./input.scss";
 
-const Select = ({ label, options, className, ...rest }) => {
-  const classes = `${className || ''}`;
+const Select = ({ label, options, className, defaultValue = "", ...rest }) => {
+  const classes = `${className || ""}`;
 
   return (
     <Fragment>
-      <div className='selectField'>
+      <div className="selectField">
         {/* Uncomment if you want to include the label */}
         {/* {label && (
           <label className="block inputLabel">
             {label}
           </label>
         )} */}
-        <select className={` ${classes} select p-4 pr-10 border rounded-none w-full `} {...rest}>
-          <option disabled selected>{label}</option>
+        <select
+          className={` ${classes} select p-4 pr-10 border rounded-none w-full `}
+          defaultValue={defaultValue}
+          {...rest}
+        >
+          <option value="" disabled>
+            {label}
+          </option>
           {options.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
+            <option key={index} value={option}>
+              {option}
+            </option>
           ))}
         </select>
       </div>

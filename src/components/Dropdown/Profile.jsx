@@ -70,7 +70,7 @@ const Profile = ({ title, className, profileImage, position, ...rest }) => {
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Edit Profile</Link></li>
           <li><Link href="/about" className='text-base-100 text-sm font-medium'>Download</Link></li>
           <li>
-            <Link href="javascript:void(0);" onClick={handleLogout} className="text-base-100 text-sm font-medium">
+            <Link href="#" onClick={handleLogout} className="text-base-100 text-sm font-medium">
               Logout
             </Link>
           </li>

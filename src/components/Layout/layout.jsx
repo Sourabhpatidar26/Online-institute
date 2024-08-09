@@ -72,7 +72,7 @@ const Layout = ({ className, data }) => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="javascript:void(0)" className='text-primary-content text-base px-6 py-4 active-tab'>
+                                    <Link href="#" className='text-primary-content text-base px-6 py-4 active-tab'>
                                         <Image src={CMS} alt="logo" className='text-center mr-2' />
                                         Contain Management
                                         <Image src={RightAngle} alt="logo" className='text-center ml-2' />

@@ -14,6 +14,10 @@ import { Fragment, useState } from "react";
 const Filter = ({ title, className, view, setView }) => {
   const classes = `${className || ''}`;
   const [showModal, setShowModal] = useState(false);
+
+  const handleChangeSelect = (e)=>{
+    console.log(e.target.value)
+  }
   return (
     <Fragment>
       <div className="flex justify-between items-center flex-wrap ">
@@ -29,7 +33,7 @@ const Filter = ({ title, className, view, setView }) => {
         <div className="filter-wrapper flex justify-between items-center flex-wrap gap-2">
           <VideoUploader showModal={showModal} setShowModal={setShowModal} />
           <Button icon={UploadIcon} iconPosition="left" className="btn-primary btn-sm" onClick={() => setShowModal(true)}>Upload Video</Button>
-          <Select label="Sort by" options={["Date", "Size"]} />
+          <Select label="Sort by" options={["Date", "Size"]} onChange={handleChangeSelect}/>
           <Select label="All Videos" options={["Live Session", "Assignment video"]} />
           <div className={`layout-view ${view === 'grid' ? 'active' : ''}`} onClick={() => setView('grid')}>
             <Image src={GridIcon} alt="grid view" className="cursor-pointer" />
