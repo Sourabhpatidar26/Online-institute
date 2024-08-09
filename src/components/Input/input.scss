@@ -16,7 +16,7 @@ label {
         max-height: 48px;
         border: 1px solid oklch(var(--nc));
         color: oklch(var(--inc));
-        background-color: oklch(var(--in));
+        background-color: transparent !important;
         width: 100%;
         &::placeholder {
             color: oklch(var(-b3));

@@ -1,0 +1,38 @@
+
+
+.custom-uploader{
+    display: flex;
+    flex-direction: column;
+    height: 170px !important;
+    border-color:  oklch(var(--b2)) !important; 
+    border-radius: 14px !important;
+    svg{
+        width: 51px;
+        height: 40px;
+        padding-top: 40px;
+        background-image: url(../../assets/images/svg/cloud.svg);
+        background-repeat: no-repeat;
+        margin-top: 30px;
+    }    
+    > div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 12px;
+        span{
+            font-size: 1rem;
+            color: oklch(var(--b1)); 
+            font-weight: 600;
+            span{
+                color: oklch(var(--p)); 
+            }
+        }
+        .file-types{
+            color: oklch(var(--b2));
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+}
