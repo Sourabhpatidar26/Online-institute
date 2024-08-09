@@ -10,20 +10,20 @@ function LiveSession() {
     <Fragment>
       <Filter title="Live Session" view={view} setView={setView} />
       <div className={`mt-5 grid ${view === 'grid' ? 'grid-view grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4' : 'list-view grid-cols-1 gap-2'}`}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
+        <Card view={view} />
       </div>
     </Fragment>
   )

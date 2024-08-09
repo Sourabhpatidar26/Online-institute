@@ -1,30 +1,47 @@
-.grid-view{
+.grid-view {
     aspect-ratio: 16 / 9;
-    .card{
+
+    .card {
         padding: 18px;
         background-color: transparent;
         border-radius: 14px;
-        figure{
+        gap: 8px;
+
+        figure {
             border-radius: 14px;
-            img{
+
+            img {
                 width: 100%;
             }
         }
-        .card-title{
+
+        .card-title {
             padding-top: 10px;
         }
     }
 }
-.list-view{
-    .card{
+
+.list-view {
+    .card {
         padding: 18px;
         background-color: transparent;
         border-radius: 14px;
-        figure{
-            border-radius: 14px;
-            width: 150px;
-            img{
-                width: auto
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        .card-header{
+            display: flex;
+            gap: 8px;
+        }
+        .card-body{
+            figure {
+                border-radius: 14px;
+                width: 120px;
+
+                img {
+                    width: auto;
+                }
             }
         }
     }
